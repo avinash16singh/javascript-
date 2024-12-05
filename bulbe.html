@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Series of Bulbs</title>
+    <style>
+        img {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>Series of bulbs with switch button and dropdown</p>
+    
+    <!-- Button to turn on all bulbs -->
+    <button onclick="turnOnAllBulbs()">Turn on all bulbs</button>
+    
+    <!-- Dropdown to select and turn on one bulb -->
+    <label for="bulbSelector">Choose a bulb to turn on:</label>
+    <select id="bulbSelector" onchange="turnOnSelectedBulb()">
+        <option value="">Select a bulb</option>
+        <option value="bulb1">Bulb 1</option>
+        <option value="bulb2">Bulb 2</option>
+        <option value="bulb3">Bulb 3</option>
+        <option value="bulb4">Bulb 4</option>
+        <option value="bulb5">Bulb 5</option>
+    </select>
+
+    <!-- Images of the bulbs -->
+    <div>
+        <img id="bulb1" src="pic_bulboff.gif" style="width:100px">
+        <img id="bulb2" src="pic_bulboff.gif" style="width:100px">
+        <img id="bulb3" src="pic_bulboff.gif" style="width:100px">
+        <img id="bulb4" src="pic_bulboff.gif" style="width:100px">
+        <img id="bulb5" src="pic_bulboff.gif" style="width:100px">
+    </div>
+
+    <!-- Button to turn off all bulbs -->
+    <button onclick="turnOffAllBulbs()">Turn off all bulbs</button>
+
+    <script>
+        // Function to turn on all bulbs
+        function turnOnAllBulbs() {
+            const bulbIds = ['bulb1', 'bulb2', 'bulb3', 'bulb4', 'bulb5'];
+            bulbIds.forEach(id => {
+                document.getElementById(id).src = 'pic_bulbon.gif';
+            });
+        }
+
+        // Function to turn on a selected bulb from the dropdown
+        function turnOnSelectedBulb() {
+            const bulbIds = ['bulb1', 'bulb2', 'bulb3', 'bulb4', 'bulb5'];
+            
+            // Turn off all bulbs first
+            turnOffAllBulbs();
+
+            // Get the selected bulb ID
+            const selectedBulb = document.getElementById("bulbSelector").value;
+            if (selectedBulb) {
+                document.getElementById(selectedBulb).src = 'pic_bulbon.gif';
+            }
+        }
+
+        // Function to turn off all bulbs
+        function turnOffAllBulbs() {
+            const bulbIds = ['bulb1', 'bulb2', 'bulb3', 'bulb4', 'bulb5'];
+            bulbIds.forEach(id => {
+                document.getElementById(id).src = 'pic_bulboff.gif';
+            });
+        }
+    </script>
+</body>
+</html>
